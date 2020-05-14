@@ -1,8 +1,8 @@
 marlin_label_config_examples
 ----------------------------
-This program operates on files within the repo MarlinConfigurations, providing them with vendor and model information so that they can be distinguished from one another when copied or moved from the original directory structure. 
+This program operates on files within the repo MarlinFirmware/Configurations, providing them with vendor and model information so that they can be distinguished from one another when copied or moved from the original directory structure. 
 
-In the MarlinConfigurations repo, there is a directory tree following the pattern:
+In the MarlinFirmware/Configurations repo, there is a directory tree following the pattern:
 > examples/[vendor]/[model]/
 
 ...with some variation in the depth of subdirectories.

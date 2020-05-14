@@ -1,7 +1,7 @@
 # for python3.5 or higher
 
 #-----------------------------------
-# Within Marlin project MarlinConfigurations, this program visits all folders
+# Within Marlin project MarlinFirmware/Configurations, this program visits all folders
 # under .../config/examples/*, processing each Configuration.h, Configuration_adv.h,
 # _Bootscreen.h, and _Statusscreen.h, to insert:
 #    #define STRING_CONFIG_EXAMPLES_DIR ("examples/<vendor>/<model>")
