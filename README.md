@@ -13,16 +13,16 @@ In the leaf subdirs are some or all of the following files: Configuration.h, Con
 ```C
 #define STRING_CONFIG_EXAMPLES_DIR ("examples/[subdirs]")
 ```
-Because [subdirs] generally corresponds to [vendor]/[model], this provides an label that uniquely identifies the file and its purpose.
+Because [subdirs] generally corresponds to [vendor]/[model], this provides a label that uniquely identifies the file and its purpose.
 
-This define is placed right after ```pragma once``` near the top of the file.
+The program places the define right after ```pragma once``` near the top of the file.
 
 * This program just uses the subdir rather than trying to derive vendor and model, because in some cases the directory structure has more or less depth, possibly with model and submodel. I declined to try to second-guess that.
 
 Usage
 -----
-1. Edit marlin_label_config_examples.py to set input_examples_dir and output_examples_dir
-* If you set output_examples_dir = input_examples_dir, the program will modify the files in place to add the define statement.
+1. Edit marlin_label_config_examples.py to set ```input_examples_dir``` and ```output_examples_dir```
+* If you set ```output_examples_dir = input_examples_dir```, the program will modify the files in place to add the define statement.
 * If the directories are different, the program will first copy all the files from the input to the output directories, as some directories include files other than the ones that this program modifies.
 
 2. Run the program, typically:
@@ -33,6 +33,8 @@ Usage
 Additional nuances
 ------------------
 * It is safe to run this program more than once on the same file(s). The code looks for an existing instance of ```STRING_CONFIG_EXAMPLES_DIR``` and leaves it alone if it's already correct and at the expected location, otherwise replaces it.
+
+* Because files are only written by the program if a change is needed, any already-correct files should maintain their timestamps. 
 
 * The assumes that the various config files are encoded in UTF-8. Many of the Configuration_adv.h files contain UTF-8-specific characters in connection with the TOUCH_UI_UTF8_xxx series of defines, for examples.
 

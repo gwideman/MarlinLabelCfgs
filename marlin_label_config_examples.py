@@ -37,6 +37,8 @@ input_examples_dir    = r'D:\ArduinoProjects\MarlinConfigurations\Configurations
 # output_examples_dir   = input_examples_dir
 output_examples_dir   = r'D:\ArduinoProjects\MarlinConfigurations\Configurations-import-2.0.x\testout\configtest2\examples'
 
+
+
 #-------------------------------------
 files_to_mod = ['Configuration.h', 'Configuration_adv.h', '_Bootscreen.h', '_Statusscreen.h']
 
@@ -128,14 +130,9 @@ def process_file(subdir: str, filename: str):
     outdir      = os.path.join(output_examples_dir, subdir)
     outfilepath = os.path.join(outdir, filename)
 
-    if file_modified or different_out_dir:
-        
-        if different_out_dir:  # create dir if needed
-            try:
-                Path(outdir).mkdir(parents=True, exist_ok=True)
-            except Exception as e:
-                print('Failed to create directory: ' + str(e) )
-                raise Exception
+    if file_modified: 
+        # Note: no need to create output dirs, as the initial copy_tree
+        # will do that.
             
         print('  writing ' + str(outfilepath))
         try:
@@ -147,7 +144,7 @@ def process_file(subdir: str, filename: str):
             print('Failed to write file: ' + str(e) )
             raise Exception
     else:
-        print('  no change for ' + str(filepath))
+        print('  no change for ' + str(outfilepath))
 
 #----------
 def main():    
@@ -171,7 +168,7 @@ def main():
             sys.exit(1)
 
     #--------------------------------
-    # Copytree if necessary.    
+    # Copy tree if necessary.    
     #--------------------------------
     # This includes files that are not otherwise included in the 
     # insertion of the define statement.
