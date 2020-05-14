@@ -1,0 +1,10 @@
+#!wing
+#!version=7.0
+##################################################################
+# Wing project file                                              #
+##################################################################
+[project attributes]
+proj.file-list = [loc('marlin_label_config_examples.py'),
+                  loc('test_glob.py')]
+proj.file-type = 'shared'
+proj.main-file = loc('marlin_label_config_examples.py')
